@@ -1,0 +1,3 @@
+[submodule "projects/gateway"]
+	path = projects/gateway
+	url = https://github.com/Dsek-LTH/gateway
