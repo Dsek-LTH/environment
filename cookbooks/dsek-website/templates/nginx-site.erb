@@ -1,0 +1,19 @@
+server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+
+	root <%= node["environment"]["frontend_path"] %>;
+	index index.html;
+
+	server_name _;
+
+	location /api/ {
+		# Pass to ZMQ gateway;
+		proxy_pass <%= node["environment"]["gateway_url"] %>;
+	}
+
+	location / {
+		try_files $uri $uri/ =404;
+	}
+}
+

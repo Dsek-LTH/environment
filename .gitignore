@@ -1,0 +1,16 @@
+# Chef
+# I think?
+nodes
+
+# General
+*.log
+
+# Node
+node_modules
+
+# Vim files
+*.swo
+*.swp
+
+# Vagrant
+.vagrant
