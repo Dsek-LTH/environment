@@ -3,10 +3,13 @@ description "Development VM role"
 
 default_attributes "environment" => {
 	"frontend_path" => "/vagrant/projects/frontend/static/",
-	"gateway_url" => "http://localhost:6000/",
+	"gateway_path" => "/vagrant/projects/gateway/",
+	"gateway_url" => "http://localhost:8080/",
 }
 
 run_list(
+	"recipe[dsek-website::development]",
 	"recipe[dsek-website::nginx]",
+	"recipe[dsek-website::gateway]",
 )
 

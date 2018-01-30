@@ -3,11 +3,7 @@
 # Recipe:: nginx
 #
 
-# Keep apt cache updated
-apt_update "Update APT cache daily" do
-	frequency 86_400
-	action :periodic
-end
+include_recipe "dsek-website::base"
 
 package "nginx"
 
