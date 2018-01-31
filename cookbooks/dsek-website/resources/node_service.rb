@@ -11,13 +11,14 @@ action :create do
 	include_recipe "dsek-website::base"
 	include_recipe "nodejs"
 
-	# We need to rename this so that we can use it in the npm_package
+	# We need to rename these so that we can use them in the npm_package
 	service_path = path
+	service_user = user
 
 	npm_package name do
 		path service_path
 		json true
-		user user
+		user service_user
 	end
 
 	systemd_unit (name + '.service') do
