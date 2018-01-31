@@ -26,6 +26,6 @@ systemd_unit 'gateway.service' do
   User=vagrant
   EOU
 
-  action [:create, :enable]
+  action [:create, :enable, :start]
 end
 
