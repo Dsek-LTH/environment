@@ -13,8 +13,8 @@ Vagrant.configure("2") do |config|
   #config.vm.box = "debian/jessie64"
   config.vm.box = "ubuntu/xenial64"
 
-  config.berkshelf.enabled = false
-  config.berkshelf.berksfile_path = "cookbooks/dsek-website/Berksfile"
+  #config.berkshelf.enabled = false
+  #config.berkshelf.berksfile_path = "cookbooks/dsek-website/Berksfile"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs

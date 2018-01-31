@@ -1,7 +1,7 @@
 # Chef
 cookbooks/vendor
 # I think?
-nodes
+#nodes
 
 # General
 *.log
