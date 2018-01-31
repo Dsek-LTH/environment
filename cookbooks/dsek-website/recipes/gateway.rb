@@ -11,8 +11,21 @@ npm_package "dsek-core" do
 	json true
 	user "vagrant"
 end
-#execute "install_gateway" do
-#	command "npm install"
-#	cwd node["environment"]["gateway_path"]
-#end
+
+systemd_unit 'gateway.service' do
+  content <<-EOU.gsub(/^\s+/, '')
+  [Unit]
+  Description=dsek gateway
+
+  [Install]
+  WantedBy=multi-user.target
+
+  [Service]
+  WorkingDirectory=/vagrant/projects/gateway
+  ExecStart=/usr/bin/env npm start
+  User=vagrant
+  EOU
+
+  action [:create, :enable]
+end
 
