@@ -1,6 +1,8 @@
 [submodule "projects/gateway"]
 	path = projects/gateway
 	url = https://github.com/Dsek-LTH/gateway
+	branch = master
 [submodule "projects/login-service"]
 	path = projects/login-service
 	url = https://github.com/Dsek-LTH/login-service
+	branch = master
