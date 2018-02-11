@@ -2,18 +2,24 @@ server {
 	listen 80 default_server;
 	listen [::]:80 default_server;
 
-	root <%= node["environment"]["frontend_path"] %>;
-	index index.html;
-
 	server_name _;
 
+	# Pass to ZMQ gateway
 	location /api/ {
-		# Pass to ZMQ gateway;
 		proxy_pass <%= node["environment"]["gateway_url"] %>;
 	}
 
+	# Development websocket connections
+	location /sockjs-node/ {
+		proxy_pass http://localhost:8080/sockjs-node/;
+		proxy_http_version 1.1;
+		proxy_set_header Upgrade $http_upgrade;
+		proxy_set_header Connection "Upgrade";
+	}
+
+	# Pass to Node development server
 	location / {
-		try_files $uri $uri/ =404;
+		proxy_pass <%= node["environment"]["frontend_url"] %>;
 	}
 }
 

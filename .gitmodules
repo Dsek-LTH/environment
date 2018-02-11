@@ -6,3 +6,6 @@
 	path = projects/login-service
 	url = https://github.com/Dsek-LTH/login-service
 	branch = master
+[submodule "projects/frontend"]
+	path = projects/frontend
+	url = https://github.com/Dsek-LTH/frontend

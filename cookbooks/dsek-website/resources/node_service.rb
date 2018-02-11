@@ -11,28 +11,31 @@ action :create do
 	include_recipe "dsek-website::base"
 	include_recipe "nodejs"
 
-	# We need to rename these so that we can use them in the npm_package
-	service_path = path
-	service_user = user
+	#npm_package new_resource.name do
+	#	path new_resource.path
+	#	json true
+	#	user new_resource.user
+	#end
 
-	npm_package name do
-		path service_path
-		json true
-		user service_user
+	execute ('install-' + new_resource.name) do
+		command 'npm install'
+		cwd new_resource.path
+		user new_resource.user
+		environment "HOME" => ("/home/" + new_resource.user)
 	end
 
-	systemd_unit (name + '.service') do
+	systemd_unit (new_resource.name + '.service') do
 	  content <<-EOU.gsub(/^\s+/, '')
 	  [Unit]
-	  Description=#{description}
+	  Description=#{new_resource.description}
 
 	  [Install]
 	  WantedBy=multi-user.target
 
 	  [Service]
-	  WorkingDirectory=#{path}
+	  WorkingDirectory=#{new_resource.path}
 	  ExecStart=/usr/bin/env npm start
-	  User=#{user}
+	  User=#{new_resource.user}
 	  EOU
 
 	  action [:create, :enable, :start]
