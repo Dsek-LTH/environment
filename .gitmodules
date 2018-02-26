@@ -9,3 +9,6 @@
 [submodule "projects/frontend"]
 	path = projects/frontend
 	url = https://github.com/Dsek-LTH/frontend
+[submodule "projects/profile-service"]
+	path = projects/profile-service
+	url = https://github.com/Dsek-LTH/profile-service
