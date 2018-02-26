@@ -12,3 +12,6 @@
 [submodule "projects/profile-service"]
 	path = projects/profile-service
 	url = https://github.com/Dsek-LTH/profile-service
+[submodule "projects/message-service"]
+	path = projects/message-service
+	url = https://github.com/Dsek-LTH/message-service

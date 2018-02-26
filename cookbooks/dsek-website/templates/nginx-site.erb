@@ -11,7 +11,7 @@ server {
 
 	# Development websocket connections
 	location /sockjs-node/ {
-		proxy_pass http://localhost:8080/sockjs-node/;
+		proxy_pass <%= node["environment"]["frontend_url"] %>/sockjs-node/;
 		proxy_http_version 1.1;
 		proxy_set_header Upgrade $http_upgrade;
 		proxy_set_header Connection "Upgrade";
