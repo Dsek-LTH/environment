@@ -48,9 +48,21 @@ at `http://localhost:8080/`.
 
 Each service currently lives in its own repository. If you are creating
 a core service (one that is required for the website's operation), make
-a pull request to this service containing:
+a pull request to this repository containing:
 
 * a new submodule pointing at the new service in `projects/`
 * a Chef recipe for the new service in `cookbooks/dsek-website/recipes/`
 * a new runlist entry for the service in `roles/development.rb`
 
+
+### Service architecture
+
+The website is built with a microservice architecture, where each service has
+a clearly defined area of responsibility and is decoupled as much as possible from the rest.
+Every service is free to use whatever kind of backing data storage that makes sense. If you want
+to use for instance a MySQL database, include configuration for that in the Chef recipe if
+committing to `environment`.
+
+Services communicate using **GraphQL** over **ZeroMQ** request/reply sockets, connected to a `gateway` service.
+The gateway stitches all the microservice GraphQL schemas together to create a complete schema for the entire website.
+Requests for different GraphQL types automatically resolve to the appropriate serviecs.
