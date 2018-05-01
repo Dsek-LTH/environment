@@ -10,8 +10,11 @@ are included as Git submodules under `projects/`.
 
 ## Getting started
 
-**Note: things are very work-in-progress at the moment and the website
+**Notes:**
+1. **Things are very work-in-progress at the moment and the website
 might not work out of the box.**
+2. **For Windows users: since `vendor-cookbooks.sh` is a shell script, you might want
+to use Git Bash or perhaps the Linux subsystem. Maybe PowerShell can handle the script as well.**
 
 Prerequisites:
 * a machine that supports virtualization
@@ -34,7 +37,7 @@ $ ./vendor-cookbooks.sh
 And fire up the virtual machine:
 
 ```
-vagrant up
+$ vagrant up
 ```
 
 If everything went according to plan, the website should now be accessible
